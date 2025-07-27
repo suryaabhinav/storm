@@ -166,7 +166,8 @@ class QdrantVectorStoreManager:
         embedding_model: str = "BAAI/bge-m3",
         device: str = "mps",
     ):
-        from qdrant_client import Document
+        # from qdrant_client.models import Document
+        from langchain_core.documents import Document
 
         """
         Takes a CSV file and adds each row in the CSV file to the Qdrant collection.
@@ -725,7 +726,7 @@ def user_input_appropriateness_check(user_input):
     if not re.match(r'^[a-zA-Z0-9\s\-"\,\.?\']*$', user_input):
         return "The input contains invalid characters. The input should only contain a-z, A-Z, 0-9, space, -/\"/,./?/'."
 
-    prompt = f"""Here is a topic input into a knowledge curation engine that can write a Wikipedia-like article for the topic. Please judge whether it is appropriate or not for the engine to curate information for this topic based on English search engine. The following types of inputs are inappropriate:
+    prompt = f"""Here is a topic input into a knowledge curation engine that can write a Systematic Literature Review like article for the topic. Please judge whether it is appropriate or not for the engine to curate information for this topic based on English search engine. The following types of inputs are inappropriate:
 1. Inputs that may be related to illegal, harmful, violent, racist, or sexual purposes.
 2. Inputs that are given using languages other than English. Currently, the engine can only support English.
 3. Inputs that are related to personal experience or personal information. Currently, the engine can only use information from the search engine.

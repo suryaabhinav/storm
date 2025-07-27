@@ -159,18 +159,34 @@ class ConvToSection(dspy.Module):
         return dspy.Prediction(section=section)
 
 
+# class WriteSection(dspy.Signature):
+#     """Write a Wikipedia section based on the collected information.
+
+#     Here is the format of your writing:
+#         1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
+#         2. Use [1], [2], ..., [n] in line (for example, "The capital of the United States is Washington, D.C.[1][3]."). You DO NOT need to include a References or Sources section to list the sources at the end.
+#     """
+
+#     info = dspy.InputField(prefix="The collected information:\n", format=str)
+#     topic = dspy.InputField(prefix="The topic of the page: ", format=str)
+#     section = dspy.InputField(prefix="The section you need to write: ", format=str)
+#     output = dspy.OutputField(
+#         prefix="Write the section with proper inline citations (Start your writing with # section title. Don't include the page title or try to write other sections):\n",
+#         format=str,
+#     )
+    
 class WriteSection(dspy.Signature):
-    """Write a Wikipedia section based on the collected information.
+    """Write a section for a Systematic Literature Review article based on the collected information.
 
     Here is the format of your writing:
         1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
-        2. Use [1], [2], ..., [n] in line (for example, "The capital of the United States is Washington, D.C.[1][3]."). You DO NOT need to include a References or Sources section to list the sources at the end.
+        2. Use [1], [2], ..., [n] in line (for example, "The study found significant correlations[1][3]."). You DO NOT need to include a References or Sources section to list the sources at the end.
     """
 
-    info = dspy.InputField(prefix="The collected information:\n", format=str)
-    topic = dspy.InputField(prefix="The topic of the page: ", format=str)
-    section = dspy.InputField(prefix="The section you need to write: ", format=str)
+    info = dspy.InputField(prefix="The collected information for the section:\n", format=str)
+    topic = dspy.InputField(prefix="The overall topic of the Systematic Literature Review: ", format=str)
+    section = dspy.InputField(prefix="The specific section you need to write for the review: ", format=str)
     output = dspy.OutputField(
-        prefix="Write the section with proper inline citations (Start your writing with # section title. Don't include the page title or try to write other sections):\n",
+        prefix="Write the Systematic Literature Review article section with proper inline citations (Start your writing with # section title. Don't include the article title or try to write other sections):\n",
         format=str,
     )

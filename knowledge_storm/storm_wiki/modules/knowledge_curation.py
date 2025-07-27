@@ -125,27 +125,52 @@ class WikiWriter(dspy.Module):
         return dspy.Prediction(question=question)
 
 
+# class AskQuestion(dspy.Signature):
+#     """You are an experienced Wikipedia writer. You are chatting with an expert to get information for the topic you want to contribute. Ask good questions to get more useful information relevant to the topic.
+#     When you have no more question to ask, say "Thank you so much for your help!" to end the conversation.
+#     Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic you want to write.
+#     """
+
+#     topic = dspy.InputField(prefix="Topic you want to write: ", format=str)
+#     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
+#     question = dspy.OutputField(format=str)
+
+
+# class AskQuestionWithPersona(dspy.Signature):
+#     """You are an experienced Wikipedia writer and want to edit a specific page. Besides your identity as a Wikipedia writer, you have specific focus when researching the topic.
+#     Now, you are chatting with an expert to get information. Ask good questions to get more useful information.
+#     When you have no more question to ask, say "Thank you so much for your help!" to end the conversation.
+#     Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic you want to write.
+#     """
+
+#     topic = dspy.InputField(prefix="Topic you want to write: ", format=str)
+#     persona = dspy.InputField(
+#         prefix="Your persona besides being a Wikipedia writer: ", format=str
+#     )
+#     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
+#     question = dspy.OutputField(format=str)
+
 class AskQuestion(dspy.Signature):
-    """You are an experienced Wikipedia writer. You are chatting with an expert to get information for the topic you want to contribute. Ask good questions to get more useful information relevant to the topic.
+    """You are a researcher working on a Systematic Literature Review. You are chatting with an expert to get information relevant to your review. Ask good questions to get more useful information related to the topic.
     When you have no more question to ask, say "Thank you so much for your help!" to end the conversation.
-    Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic you want to write.
+    Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic of your systematic literature review.
     """
 
-    topic = dspy.InputField(prefix="Topic you want to write: ", format=str)
+    topic = dspy.InputField(prefix="Topic of the Systematic Literature Review: ", format=str)
     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
     question = dspy.OutputField(format=str)
 
 
 class AskQuestionWithPersona(dspy.Signature):
-    """You are an experienced Wikipedia writer and want to edit a specific page. Besides your identity as a Wikipedia writer, you have specific focus when researching the topic.
+    """You are a researcher working on a Systematic Literature Review. Besides your identity as a researcher, you have a specific focus when gathering information for your review.
     Now, you are chatting with an expert to get information. Ask good questions to get more useful information.
     When you have no more question to ask, say "Thank you so much for your help!" to end the conversation.
-    Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic you want to write.
+    Please only ask a question at a time and don't ask what you have asked before. Your questions should be related to the topic of your systematic literature review.
     """
 
-    topic = dspy.InputField(prefix="Topic you want to write: ", format=str)
+    topic = dspy.InputField(prefix="Topic of the Systematic Literature Review: ", format=str)
     persona = dspy.InputField(
-        prefix="Your persona besides being a Wikipedia writer: ", format=str
+        prefix="Your specific research focus: ", format=str # Renamed prefix for clarity with SLR context
     )
     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
     question = dspy.OutputField(format=str)
@@ -164,16 +189,29 @@ class QuestionToQuery(dspy.Signature):
     queries = dspy.OutputField(format=str)
 
 
+# class AnswerQuestion(dspy.Signature):
+#     """You are an expert who can use information effectively. You are chatting with a Wikipedia writer who wants to write a Wikipedia page on topic you know. You have gathered the related information and will now use the information to form a response.
+#     Make your response as informative as possible, ensuring that every sentence is supported by the gathered information. If the [gathered information] is not directly related to the [topic] or [question], provide the most relevant answer based on the available information. If no appropriate answer can be formulated, respond with, “I cannot answer this question based on the available information,” and explain any limitations or gaps.
+#     """
+
+#     topic = dspy.InputField(prefix="Topic you are discussing about:", format=str)
+#     conv = dspy.InputField(prefix="Question:\n", format=str)
+#     info = dspy.InputField(prefix="Gathered information:\n", format=str)
+#     answer = dspy.OutputField(
+#         prefix="Now give your response. (Try to use as many different sources as possible and add do not hallucinate.)\n",
+#         format=str,
+#     )
+
 class AnswerQuestion(dspy.Signature):
-    """You are an expert who can use information effectively. You are chatting with a Wikipedia writer who wants to write a Wikipedia page on topic you know. You have gathered the related information and will now use the information to form a response.
+    """You are an expert who can use information effectively. You are chatting with a researcher who is compiling a Systematic Literature Review on a topic you know. You have gathered the related information and will now use the information to form a response.
     Make your response as informative as possible, ensuring that every sentence is supported by the gathered information. If the [gathered information] is not directly related to the [topic] or [question], provide the most relevant answer based on the available information. If no appropriate answer can be formulated, respond with, “I cannot answer this question based on the available information,” and explain any limitations or gaps.
     """
 
-    topic = dspy.InputField(prefix="Topic you are discussing about:", format=str)
-    conv = dspy.InputField(prefix="Question:\n", format=str)
+    topic = dspy.InputField(prefix="Topic of the Systematic Literature Review:", format=str)
+    conv = dspy.InputField(prefix="Question from the researcher:\n", format=str) # Clarified prefix
     info = dspy.InputField(prefix="Gathered information:\n", format=str)
     answer = dspy.OutputField(
-        prefix="Now give your response. (Try to use as many different sources as possible and add do not hallucinate.)\n",
+        prefix="Now give your response. (Try to use as many different sources as possible and do not hallucinate.)\n", # Minor wording improvement
         format=str,
     )
 

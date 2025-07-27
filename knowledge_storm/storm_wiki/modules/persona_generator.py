@@ -45,24 +45,45 @@ def get_wiki_page_title_and_toc(url):
     return main_title, toc.strip()
 
 
-class FindRelatedTopic(dspy.Signature):
-    """I'm writing a Wikipedia page for a topic mentioned below. Please identify and recommend some Wikipedia pages on closely related subjects. I'm looking for examples that provide insights into interesting aspects commonly associated with this topic, or examples that help me understand the typical content and structure included in Wikipedia pages for similar topics.
-    Please list the urls in separate lines."""
+# class FindRelatedTopic(dspy.Signature):
+#     """I'm writing a Wikipedia page for a topic mentioned below. Please identify and recommend some Wikipedia pages on closely related subjects. I'm looking for examples that provide insights into interesting aspects commonly associated with this topic, or examples that help me understand the typical content and structure included in Wikipedia pages for similar topics.
+#     Please list the urls in separate lines."""
 
-    topic = dspy.InputField(prefix="Topic of interest:", format=str)
-    related_topics = dspy.OutputField(format=str)
+#     topic = dspy.InputField(prefix="Topic of interest:", format=str)
+#     related_topics = dspy.OutputField(format=str)
+
+
+# class GenPersona(dspy.Signature):
+#     """You need to select a group of Wikipedia editors who will work together to create a comprehensive article on the topic. Each of them represents a different perspective, role, or affiliation related to this topic. You can use other Wikipedia pages of related topics for inspiration. For each editor, add a description of what they will focus on.
+#     Give your answer in the following format: 1. short summary of editor 1: description\n2. short summary of editor 2: description\n...
+#     """
+
+#     topic = dspy.InputField(prefix="Topic of interest:", format=str)
+#     examples = dspy.InputField(
+#         prefix="Wiki page outlines of related topics for inspiration:\n", format=str
+#     )
+#     personas = dspy.OutputField(format=str)
+
+class FindRelatedTopic(dspy.Signature):
+    """I'm conducting a Systematic Literature Review on a topic mentioned below. Please identify and recommend closely related research topics, seminal papers, or other systematic reviews that provide insights into interesting aspects commonly associated with this topic, or examples that help me understand typical approaches and structures in systematic reviews for similar areas.
+    Please list each recommendation on a new line. Include relevant URLs if available.
+    """
+
+    topic = dspy.InputField(prefix="Topic of the Systematic Literature Review:", format=str)
+    related_topics = dspy.OutputField(prefix="Related Research Topics, Papers, or Reviews:\n", format=str)
 
 
 class GenPersona(dspy.Signature):
-    """You need to select a group of Wikipedia editors who will work together to create a comprehensive article on the topic. Each of them represents a different perspective, role, or affiliation related to this topic. You can use other Wikipedia pages of related topics for inspiration. For each editor, add a description of what they will focus on.
-    Give your answer in the following format: 1. short summary of editor 1: description\n2. short summary of editor 2: description\n...
+    """You need to select a group of distinct research perspectives or methodological angles that would contribute to a comprehensive Systematic Literature Review on the topic. Each perspective should represent a different facet, theoretical lens, or methodological approach related to this topic. You can use related systematic reviews or academic papers for inspiration. For each perspective, add a description of what they would focus on within the review.
+    Give your answer in the following format: 1. short summary of perspective 1: description\n2. short summary of perspective 2: description\n...
     """
 
-    topic = dspy.InputField(prefix="Topic of interest:", format=str)
+    topic = dspy.InputField(prefix="Topic of the Systematic Literature Review:", format=str)
     examples = dspy.InputField(
-        prefix="Wiki page outlines of related topics for inspiration:\n", format=str
+        prefix="Outlines or summaries of related systematic reviews/academic papers for inspiration:\n", format=str
     )
-    personas = dspy.OutputField(format=str)
+    personas = dspy.OutputField(prefix="Research Perspectives for the SLR:\n", format=str)
+
 
 
 class CreateWriterWithPersona(dspy.Module):

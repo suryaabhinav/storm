@@ -98,7 +98,8 @@ class WriteOutline(dspy.Module):
             trimmed_dlg_history.append(turn)
         conv = "\n".join(
             [
-                f"Wikipedia Writer: {turn.user_utterance}\nExpert: {turn.agent_utterance}"
+                # f"Wikipedia Writer: {turn.user_utterance}\nExpert: {turn.agent_utterance}"
+                f"Researcher: {turn.user_utterance}\nExpert: {turn.agent_utterance}"
                 for turn in trimmed_dlg_history
             ]
         )
@@ -125,16 +126,16 @@ class WriteOutline(dspy.Module):
         return dspy.Prediction(outline=outline, old_outline=old_outline)
 
 
-class WritePageOutline(dspy.Signature):
-    """Write an outline for a Wikipedia page.
-    Here is the format of your writing:
-    1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
-    2. Do not include other information.
-    3. Do not include topic name itself in the outline.
-    """
+# class WritePageOutline(dspy.Signature):
+#     """Write an outline for a Wikipedia page.
+#     Here is the format of your writing:
+#     1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
+#     2. Do not include other information.
+#     3. Do not include topic name itself in the outline.
+#     """
 
-    topic = dspy.InputField(prefix="The topic you want to write: ", format=str)
-    outline = dspy.OutputField(prefix="Write the Wikipedia page outline:\n", format=str)
+#     topic = dspy.InputField(prefix="The topic you want to write: ", format=str)
+#     outline = dspy.OutputField(prefix="Write the Wikipedia page outline:\n", format=str)
 
 
 class NaiveOutlineGen(dspy.Module):
@@ -150,18 +151,46 @@ class NaiveOutlineGen(dspy.Module):
         return dspy.Prediction(outline=outline)
 
 
-class WritePageOutlineFromConv(dspy.Signature):
-    """Improve an outline for a Wikipedia page. You already have a draft outline that covers the general information. Now you want to improve it based on the information learned from an information-seeking conversation to make it more informative.
+# class WritePageOutlineFromConv(dspy.Signature):
+#     """Improve an outline for a Wikipedia page. You already have a draft outline that covers the general information. Now you want to improve it based on the information learned from an information-seeking conversation to make it more informative.
+#     Here is the format of your writing:
+#     1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
+#     2. Do not include other information.
+#     3. Do not include topic name itself in the outline.
+#     """
+
+#     topic = dspy.InputField(prefix="The topic you want to write: ", format=str)
+#     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
+#     old_outline = dspy.OutputField(prefix="Current outline:\n", format=str)
+#     outline = dspy.OutputField(
+#         prefix='Write the Wikipedia page outline (Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, ...):\n',
+#         format=str,
+#     )
+    
+class WritePageOutline(dspy.Signature):
+    """Write an outline for a Systematic Literature Review article.
     Here is the format of your writing:
     1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
     2. Do not include other information.
     3. Do not include topic name itself in the outline.
     """
 
-    topic = dspy.InputField(prefix="The topic you want to write: ", format=str)
+    topic = dspy.InputField(prefix="The topic for the systematic literature review: ", format=str)
+    outline = dspy.OutputField(prefix="Write the Systematic Literature Review article outline:\n", format=str)
+
+class WritePageOutlineFromConv(dspy.Signature):
+    """Improve an outline for a Systematic Literature Review article. You already have a draft outline that covers the general information. Now you want to improve it based on the information learned from an information-seeking conversation to make it more informative and comprehensive for a systematic review.
+    Here is the format of your writing:
+    1. Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, "###" Title" to indicate subsubsection title, and so on.
+    2. Do not include other information.
+    3. Do not include topic name itself in the outline.
+    """
+
+    topic = dspy.InputField(prefix="The topic for the systematic literature review: ", format=str)
     conv = dspy.InputField(prefix="Conversation history:\n", format=str)
-    old_outline = dspy.OutputField(prefix="Current outline:\n", format=str)
+    # IMPORTANT: Changed old_outline to InputField as it's the outline being provided for improvement.
+    old_outline = dspy.InputField(prefix="Current draft outline:\n", format=str)
     outline = dspy.OutputField(
-        prefix='Write the Wikipedia page outline (Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, ...):\n',
+        prefix='Write the improved Systematic Literature Review article outline (Use "#" Title" to indicate section title, "##" Title" to indicate subsection title, ...):\n',
         format=str,
     )
