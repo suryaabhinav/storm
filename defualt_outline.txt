@@ -1,0 +1,87 @@
+# Introduction
+## Background and Context
+### Overview of the Role of Parents in Child Healthcare
+### The Emerging Role of Technology in Healthcare
+### Introduction to Parent-Captured Videos in Clinical Settings
+## Problem Statement
+### Challenges in Traditional Diagnostic Processes (e.g., fleeting symptoms, recall bias)
+### Potential Benefits and Current Gaps in Utilizing Parent-Captured Videos
+## Significance of the Review
+### Contribution to the Field of Digital Health and Pediatrics
+### Implications for Clinical Practice and Technology Development
+# Findings
+## Overview of Included Studies
+### Characteristics of the Included Literature (e.g., study design, population, clinical focus)
+### Geographic Distribution and Publication Trends
+## Needs and Perspectives on Parent-Captured Videos
+### Parental Motivations and Perceived Benefits of Video Capture
+#### Capturing Fleeting Symptoms and Behaviors
+#### Enhancing Communication and Providing Evidence to Clinicians
+#### Reducing Parental Anxiety and Empowering Parents
+### Clinician Perspectives on the Utility of Parent-Captured Videos
+#### Diagnostic Aid and Decision Support (e.g., neurological, developmental disorders)
+#### Monitoring Disease Progression and Treatment Efficacy
+#### Challenges and Limitations from a Clinical Standpoint (e.g., video quality, contextual information)
+### Identified Barriers to Effective Video Capture and Utilization
+#### Technical Barriers (e.g., device availability, storage, upload)
+#### Usability Challenges for Parents
+#### Clinician Workflow Integration Issues
+#### Ethical and Privacy Concerns
+### Design Considerations for User-Centered Applications (Addressing RQ2 & RO2)
+#### Key Features and Functionalities of Existing or Proposed Applications
+##### Secure Video Upload and Storage
+##### Annotation and Contextual Information Capture (by parents and clinicians)
+##### Communication Tools within the Application
+##### Integration with Electronic Health Records (EHRs)
+#### Usability and Accessibility Requirements for Parents
+##### Intuitive Interface Design
+##### Clear Instructions and Guidance for Video Capture
+##### Multilingual Support and Cultural Considerations
+#### Features Supporting Clinician Decision-Making
+##### Organized Viewing and Annotation Tools for Clinicians
+##### Ability to Extract Key Moments or Create Summaries
+##### Integration with Diagnostic Guidelines or Support Systems
+### Impact on Communication and Collaboration (Addressing RQ3 & RO3)
+#### Enhanced Parent-Clinician Communication through Video
+##### Improved Specificity and Accuracy of Parental Reporting
+##### Facilitating Shared Understanding of the Child's Condition
+#### Impact on Collaborative Decision-Making
+##### Empowering Parents as Active Participants in the Diagnostic Process
+##### Fostering Trust and Rapport
+#### Feasibility and Acceptability of Parent-Captured Videos in Practice
+##### Reported User Satisfaction (Parents and Clinicians)
+##### Time and Resource Implications
+##### Identified Challenges to Widespread Adoption
+# Discussion
+## Synthesis of Key Findings
+### Reiteration of the Overarching Needs for Parent-Captured Videos
+### Summary of Critical Design Principles for Supportive Applications
+### Reinforcement of the Value in Parent-Clinician Communication
+## Addressing the Research Questions
+### Discussion of RQ1: Detailed answers regarding needs and effective use of parent-captured videos by parents and clinicians, respectively.
+### Discussion of RQ2: Comprehensive insights into designing a user-centered application, emphasizing accessibility for parents and decision support for clinicians.
+### Discussion of RQ3: Analysis of the demonstrated value of parent-captured videos in improving communication and collaboration.
+## Strengths and Limitations of Current Evidence
+### Methodological Rigor of Included Studies
+### Gaps in the Existing Literature (e.g., specific clinical populations, long-term outcomes)
+### Geographic and Cultural Bias in Research
+## Implications for Research and Practice
+### For Clinical Practice: Recommendations for integrating parent-captured videos
+### For Technology Development: Guidelines for designing future applications
+### For Policy Makers: Considerations for privacy, data security, and reimbursement
+# Future Scope
+## Unexplored Areas and Research Gaps
+### Longitudinal Studies on Diagnostic Accuracy and Patient Outcomes
+### Cost-Effectiveness Analyses of Implementing Video Capture Systems
+### Research on Specific Clinical Specialties and Rare Diseases
+### Development and Evaluation of AI/ML-driven Analysis Tools for Videos
+## Methodological Considerations for Future Research
+### Recommendations for Robust Study Designs
+### Importance of Multi-Site and International Collaborations
+## Emerging Technologies and Trends
+### Integration with Telemedicine Platforms
+### Wearable Devices and Continuous Monitoring
+# Conclusion
+## Summary of Key Contributions
+## Reiteration of the Significance of Parent-Captured Videos
+## Final Concluding Remarks
